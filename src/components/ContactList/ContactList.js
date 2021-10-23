@@ -1,21 +1,31 @@
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import ContactItem from './ContactItem';
 import styles from './ContactList.module.css';
-import phonebookAction from '../../redux/phonebook/phonebook-actions';
-import { getVisibleContact } from '../../redux/phonebook/phonebook-selectors';
+import {
+  getVisibleContact,
+  deleteContact,
+  fetchContact,
+} from 'redux/phonebook';
 
 function ContactList() {
   const contacts = useSelector(getVisibleContact);
   const dispatch = useDispatch();
-  const onDeleteContact = id => dispatch(phonebookAction.deleteContact(id));
+  const onDeleteContact = id => dispatch(deleteContact(id));
+
+  useEffect(() => {
+    dispatch(fetchContact());
+  }, []);
+
   return (
+   <section>
+    <h2>Contact</h2>
+
     <ul className={styles.list}>
       {contacts.map(contact => {
-        const { id, name, number } = contact;
-
-        return (
-          <ContactItem
+        const { id, name, number } =>  (
+      <ContactItem
+            id={id}
             key={id}
             name={name}
             number={number}
@@ -24,18 +34,11 @@ function ContactList() {
           />
         );
       })}
-    </ul>
+      </ul>
+    </section>
   );
 }
 
 export default ContactList;
 
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
+
