@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import phonebookAction from '../../redux/phonebook/phonebook-actions';
-import { getItems } from '../../redux/phonebook/phonebook-selectors';
+import { getItems, addContact } from 'redux/phonebook';
 import styles from './ContactForm.module.css';
 
 function ContactForm() {
@@ -31,7 +29,7 @@ function ContactForm() {
     const repeatName = name.toLowerCase();
     return items.find(contact => contact.name === repeatName);
   };
-  const addContact = () => dispatch(phonebookAction.addContact(name, number));
+  const addContact = () => dispatch(addContact(name, number));
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -92,8 +90,3 @@ function ContactForm() {
 }
 
 export default ContactForm;
-
-ContactForm.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.number,
-};
