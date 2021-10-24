@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getItems, addContact } from 'redux/phonebook';
+import { getItems } from '../../redux/phonebook/phonebook-selectors';
+import { addContact } from '../../redux/phonebook/phonebook-operation';
 import styles from './ContactForm.module.css';
 
 function ContactForm() {
@@ -29,7 +30,7 @@ function ContactForm() {
     const repeatName = name.toLowerCase();
     return items.find(contact => contact.name === repeatName);
   };
-  const addContact = () => dispatch(addContact(name, number));
+  const formAddContact = () => dispatch(addContact(name, number));
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -48,7 +49,7 @@ function ContactForm() {
       return;
     }
 
-    repeat ? toast.error(`${name} уже существует!`) : addContact();
+    repeat ? toast.error(`${name} уже существует!`) : formAddContact();
 
     reset();
   };

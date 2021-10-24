@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
-import ContactsForm from './component/ContactForm';
-import Filter from './component/Filter';
-import ContactList from './component/ContactList';
-import Container from './component/Container';
-import { getLoading, getError, getItems } from 'redux/phonebook';
+import ContactForm from './components/ContactForm';
+import Filter from './components/Filter';
+import ContactList from './components/ContactList';
+import Section from './components/Section';
+import { getLoading, getError, getItems } from './redux/phonebook';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import styles from './App.module.css';
 
 export default function App() {
   const loading = useSelector(getLoading);
@@ -17,12 +17,12 @@ export default function App() {
   const visibleFilter = useSelector(getItems);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       {error && <h1 className="error">{error.message}</h1>}
       {!error && (
-        <Container>
+        <Section>
           <h1>Phonebook</h1>
-          <ContactsForm />
+          <ContactForm />
           {/* <h2>Contact</h2> */}
 
           {visibleFilter.length > 1 && <Filter />}
@@ -50,7 +50,7 @@ export default function App() {
             draggable
             pauseOnHover
           />
-        </Container>
+        </Section>
       )}
     </div>
   );
