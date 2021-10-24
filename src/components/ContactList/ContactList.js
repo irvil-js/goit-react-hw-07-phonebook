@@ -2,12 +2,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import ContactItem from './ContactItem';
 import styles from './ContactList.module.css';
-// import { getVisibleContact } from '../../redux/phonebook';
 import {
   getVisibleContact,
   deleteContact,
   fetchContact,
-} from '../../redux/phonebook';
+} from 'redux/phonebook';
 
 function ContactList() {
   const contacts = useSelector(getVisibleContact);

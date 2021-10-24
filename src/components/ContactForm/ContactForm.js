@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getItems } from '../../redux/phonebook/phonebook-selectors';
-import { addContact } from '../../redux/phonebook/phonebook-operation';
+import { getItems } from 'redux/phonebook';
+import { addContact } from 'redux/phonebook';
 import styles from './ContactForm.module.css';
 
 function ContactForm() {

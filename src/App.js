@@ -3,7 +3,7 @@ import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 import Section from './components/Section';
-import { getLoading, getError, getItems } from './redux/phonebook';
+import { getLoading, getError, getItems } from 'redux/phonebook';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
