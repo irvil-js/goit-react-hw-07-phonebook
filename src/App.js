@@ -20,8 +20,7 @@ export default function App() {
     <div className={styles.wrapper}>
       {error && <h1 className="error">{error.message}</h1>}
       {!error && (
-        <Section>
-          <h1>Phonebook</h1>
+        <Section title="Phonebook">
           <ContactForm />
           {/* <h2>Contact</h2> */}
 

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Filter.module.css';
-import { getFilter, changeFilter } from '../../redux/phonebook';
+import { getFilter, changeFilter } from 'redux/phonebook';
 
 function Filter() {
   const value = useSelector(getFilter);
